@@ -9,5 +9,8 @@
     "angular": true,
     "module": true,
     "inject": true
+  },
+  "rules": {
+    "angular/di": [2, "array"]
   }
 }
