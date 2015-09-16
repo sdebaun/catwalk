@@ -1,21 +1,21 @@
 (function() {
-  'use strict';
+'use strict';
 
-  angular
-    .module('catwalk')
-    .config(config);
+angular
+.module('catwalk')
+.config(['$urlRouterProvider', '$mdThemingProvider', function($urlRouterProvider,$mdThemingProvider){
+  $urlRouterProvider.otherwise('/');
 
-  /** @ngInject */
-  function config($logProvider, toastrConfig) {
-    // Enable log
-    $logProvider.debugEnabled(true);
-
-    // Set options third-party lib
-    toastrConfig.allowHtml = true;
-    toastrConfig.timeOut = 3000;
-    toastrConfig.positionClass = 'toast-top-right';
-    toastrConfig.preventDuplicates = true;
-    toastrConfig.progressBar = true;
-  }
+  $mdThemingProvider.theme('default')
+    .primaryPalette('indigo', {
+      default: '900'
+    })
+    .accentPalette('yellow', {
+      default: '800',
+    })
+    .warnPalette('red', {
+      default: 'A700'
+    })
+}]);
 
 })();
