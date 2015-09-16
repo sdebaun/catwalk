@@ -1,9 +1,17 @@
 .page.dash
-  form[name=newCatwalk]
+  
+  .addingCatwalk
     padding 0.25em 1em 1em 1em
-    margin 0
     background-color #3F51B5 //#C5CAE9
-    
+
+    &.ng-enter
+      -webkit-animation: fadeInDown 1s
+      animation: fadeInDown 1s
+
+    &.ng-leave
+      -webkit-animation: fadeOutUp 0.5s
+      animation: fadeOutUp 0.5s
+      
   .onboarding
     color white
   
