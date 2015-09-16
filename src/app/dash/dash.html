@@ -10,35 +10,44 @@
 
   <div class='container'>
     <form name='newCatwalk'>
+
       <div class='onboarding'>
         <h2>Your FURst Catwalk!</h2>
         <p>Just tell us when you want your cat walked, and we'll walk it!</p>
       </div>
 
-      <md-input-container>
-        <label>How do you want your cat walked?</label>
-        <input name='how' ng-model='how' required md-maxlength='30'/>
-      </md-input-container>
+      <div class='fields'>
 
-      <md-input-container>
-        <label>How many leashes should we use?</label>
-        <input name='leashes' ng-model='leashes'/>
-        <md-slider ng-model='leashes' md-discrete step='1' min='1' max='10'></md-slider>
-      </md-input-container>
+        <div layout-sm='column' layout-gt-sm='row' layout-align='start center' layout-padding layout-fill>
 
-      <md-input-container>
-        <label>How often should we walk your cat?</label>
-        <md-select name='frequency' ng-model='frequency'>
-          <md-option ng-value="'20min'">Every 20 minutes</md-option>
-          <md-option ng-value="'hourly'">Hourly</md-option>
-          <md-option ng-value="'daily'">Daily</md-option>
-        </md-slider>
-      </md-input-container>
+          <md-input-container layout-fill layout-padding>
+            <label>How do you want your cat walked?</label>
+            <input name='how' ng-model='how' required md-maxlength='30'/>
+          </md-input-container>
 
-      <md-input-container>
-        <label>When should we start?</label>
-        <input name='next' ng-model='next' step='1' min='1' max='10'></md-slider>
-      </md-input-container>
+          <md-input-container layout='row' layout-align='start center' layout-fill layout-padding>
+            <md-slider flex class='leashes' ng-model='leashes' md-discrete step='1' min='1' max='10'></md-slider>
+            <div>{{leashes}} Leashes</div>
+          </md-input-container>
+
+        </div>
+        <div layout-sm='column' layout-gt-sm='row' layout-align='start center' layout-padding layout-fill>
+          <md-input-container layout-fill layout-padding>
+            <label>How often should we walk your cat?</label>
+            <md-select name='frequency' ng-model='frequency'>
+              <md-option ng-value="'20min'">Every 20 minutes</md-option>
+              <md-option ng-value="'hourly'">Hourly</md-option>
+              <md-option ng-value="'daily'">Daily</md-option>
+            </md-slider>
+          </md-input-container>
+
+          <md-input-container layout-fill layout-padding>
+            <label>When should we start?</label>
+            <input name='next' ng-model='next' step='1' min='1' max='10'></md-slider>
+          </md-input-container>
+        </div>
+
+      </div>
 
     </form>
   </div>
