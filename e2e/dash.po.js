@@ -12,6 +12,9 @@ var DashPage = function() {
   this.divOnboarding = element(by.css('div.onboarding'))
 
   this.buttonSave = element(by.css('button.save'))
+
+//   this.thumbnailEls = element(by.css('body')).all(by.repeater('awesomeThing in main.awesomeThings'));
+  this.rowsCatwalk = element(by.css('body')).all(by.repeater('catwalk in catwalks'));
 };
 
 module.exports = new DashPage();

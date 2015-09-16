@@ -10,7 +10,7 @@ describe('Feature 4. New catwalk, fields', function () {
     page = require('./dash.po');
   });
 
-  it('should let me enter data that gets saved', function(done) {
+  it('should make me enter data before i can save', function(done) {
     expect(page.buttonSave.isDisplayed()).not.toBeTruthy();
     page.textHow.sendKeys("gently");
     page.textLeashes.sendKeys("4");
