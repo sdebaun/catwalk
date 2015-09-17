@@ -8,8 +8,12 @@
     </div>
   </md-toolbar>
 
+  <div class='loadspinner' ng-hide='catwalksLoaded'>
+  Loading...
+  </div>
+
   <div class='container addingCatwalk' ng-if='addingCatwalk'>
-    <form name='newCatwalk'>
+    <form name='addCatwalk' ng-submit='createCatwalk()'>
 
       <div class='onboarding'>
         <h2>Your FURst Catwalk!</h2>
@@ -18,42 +22,43 @@
 
       <div class='fields'>
 
-        <div layout-sm='column' layout-gt-sm='row' layout-align='start center' layout-padding layout-fill>
+        <catwalk-fields catwalk='newCatwalk'></catwalk-fields>
 
-          <md-input-container flex-gt-sm='50' layout-fill layout-padding>
-            <label>How do you want your cat walked?</label>
-            <input name='how' ng-model='how' required md-maxlength='30'/>
-          </md-input-container>
-
-          <div flex-gt-sm='50' layout='row' layout-align='start end' layout-fill layout-padding>
-            <md-slider flex id='leashes' class='leashes' ng-model='leashes' md-discrete step='1' min='1' max='10'></md-slider>
-            <input flex='20' type='number' name='leashes' ng-model='leashes' aria-controls='leashes' min='1' max='10' required>
-            <div flex='20'>Leashes</div>
-          </div>
-
-        </div>
-
-        <div layout-sm='column' layout-gt-sm='row' layout-align='start center' layout-padding layout-fill>
-          <md-input-container layout-fill layout-padding>
-            <label>How often should we walk your cat?</label>
-            <md-select name='frequency' ng-model='frequency' required>
-              <md-option class='20m' ng-value="'20min'">Every 20 minutes</md-option>
-              <md-option class='hourly' ng-value="'hourly'">Hourly</md-option>
-              <md-option class='daily' ng-value="'daily'">Daily</md-option>
-            </md-slider>
-          </md-input-container>
-
-          <md-input-container layout-fill layout-padding>
-            <label>When should we start?</label>
-            <input name='next' ng-model='next' required></md-slider>
-          </md-input-container>
-        </div>
-
-        <md-button ng-show='newCatwalk.$valid' class='md-accent md-raised save'>PURRFECT!</md-button>
+        <md-button ng-show='addCatwalk.$valid' class='md-accent md-raised save'>PURRFECT!</md-button>
 
       </div>
 
     </form>
   </div>
+
+  <div class='container'>
+    <md-list>
+      <div ng-repeat='catwalk in catwalks'>
+        <md-list-item>
+          <!-- <md-icon md-font-set='material-icons'>face</md-icon> -->
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="daily"'>wb_sunny</md-icon>
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="hourly"'>hourglass_empty</md-icon>
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="20m"'>schedule</md-icon>
+          <div flex>
+            <h3>{{catwalk.how}}</h3>
+            <p>
+              {{catwalk.leashes}} Leashes |
+              <span ng-if='catwalk.frequency=="daily"'>Daily</span>
+              <span ng-if='catwalk.frequency=="hourly"'>Hourly</span>
+              <span ng-if='catwalk.frequency=="20m"'>Every 20m</span>              
+            </p>
+          </div>
+          <div flex='20'>
+            <p>NEXT</p>
+            {{catwalk.next}}
+          </div>
+        </md-list-item>
+        <div ng-show='isOpen'>
+        deets
+        </div>
+      </div>
+    </md-list>
+  </div>
+
 
 </div>

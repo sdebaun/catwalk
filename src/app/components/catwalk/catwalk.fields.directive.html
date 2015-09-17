@@ -1,0 +1,31 @@
+<div layout-sm='column' layout-gt-sm='row' layout-align='start center' layout-padding layout-fill>
+
+  <md-input-container flex-gt-sm='50' layout-fill layout-padding>
+    <label>How do you want your cat walked?</label>
+    <input name='how' ng-model='catwalk.how' required md-maxlength='30'/>
+  </md-input-container>
+
+  <div flex-gt-sm='50' layout='row' layout-align='start end' layout-fill layout-padding>
+    <md-slider flex id='leashes' class='leashes' ng-model='catwalk.leashes'
+      md-discrete step='1' min='1' max='10' aria-label='leashes'></md-slider>
+    <input flex='20' type='number' name='leashes' ng-model='catwalk.leashes' aria-controls='leashes' min='1' max='10' required>
+    <div flex='20'>Leashes</div>
+  </div>
+
+</div>
+
+<div layout-sm='column' layout-gt-sm='row' layout-align='start center' layout-padding layout-fill>
+  <md-input-container layout-fill layout-padding>
+    <label>How often should we walk your cat?</label>
+    <md-select name='frequency' ng-model='catwalk.frequency' required>
+      <md-option class='20m' ng-value="'20min'">Every 20 minutes</md-option>
+      <md-option class='hourly' ng-value="'hourly'">Hourly</md-option>
+      <md-option class='daily' ng-value="'daily'">Daily</md-option>
+    </md-slider>
+  </md-input-container>
+
+  <md-input-container layout-fill layout-padding>
+    <label>When should we start?</label>
+    <input name='next' ng-model='catwalk.next' required></md-slider>
+  </md-input-container>
+</div>

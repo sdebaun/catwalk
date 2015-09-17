@@ -1,5 +1,9 @@
+var Firebase = require("firebase");
+var fbRoot = new Firebase("https://catwalk-sample.firebaseio.com");
+
 module.exports = {
   clear: function(){
-    // blow away the firebase
+    fbRoot.remove();
+    console.log("Deleted all Firebase data");
   }
 };

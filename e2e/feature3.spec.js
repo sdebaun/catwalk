@@ -11,6 +11,7 @@ describe('Feature 3. No catwalks, entry form', function () {
   });
 
   it('should show a new catwalk form and onboarding text', function() {
+    browser.wait(protractor.until.elementIsNotVisible(page.loadSpinner),10000);
     expect(page.textHow.isDisplayed()).toBeTruthy()
     expect(page.sliderLeashes.isDisplayed()).toBeTruthy()
     expect(page.selectFrequency.isDisplayed()).toBeTruthy()
