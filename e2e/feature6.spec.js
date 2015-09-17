@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Feature 6. Adding 2d catwalk', function () {
+describe('Feature 6. Adding 2d catwalk w button', function () {
   var page;
 
   beforeEach(function () {
@@ -12,25 +12,9 @@ describe('Feature 6. Adding 2d catwalk', function () {
 
   it('should let me enter and see a second catwalk', function(done) {
     browser.wait(protractor.until.elementIsNotVisible(page.loadSpinner),10000);
-    expect(page.rowsCatwalk.count()).toBe(1);
+    expect(page.buttonAddCatwalk.isDisplayed()).toBeTruthy
     page.buttonAddCatwalk.click().then( function(){
       expect(page.divOnboarding.isDisplayed()).not.toBeTruthy();
-      page.textHow.sendKeys("to the pub");
-      page.textLeashes.sendKeys("2");
-      return page.selectFrequency.click()
-    }).then( function(){
-      return page.optionHourly.click();
-    }).then( function(){
-      return page.timeNext.sendKeys("6 PM");
-    }).then( function(){
-      return page.buttonSave.click();
-    }).then( function(){
-      expect(page.rowsCatwalk.count()).toBe(2);
-      var newRow = page.rowsCatwalk.get(1);
-      expect(newRow.getText()).toContain("to the pub");
-      expect(newRow.getText()).toContain("2 Leashes");
-      expect(newRow.getText()).toContain("6 PM");
-      expect(newRow.getText()).toContain("Hourly");
       done();
     })
   });
