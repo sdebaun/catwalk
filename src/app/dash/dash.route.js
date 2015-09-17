@@ -10,9 +10,17 @@ angular
     url: '/dash',
     templateUrl: 'app/dash/dash.html',
     controller: function($scope, $timeout, $firebaseArray, Catwalks){
-      $timeout(function(){ $scope.addingCatwalk = true }) // in a timeout to make the animation trigger
-      $scope.catwalks = $firebaseArray(Catwalks)
+      // $timeout(function(){ $scope.addingCatwalk = true }) // in a timeout to make the animation trigger
       $scope.newCatwalk = {};
+      $scope.catwalks = $firebaseArray(Catwalks)
+      $scope.catwalks.$loaded().then(function(){
+        $scope.catwalksLoaded = true
+        if ($scope.catwalks.length==0) {
+          $scope.addingCatwalk = true;
+        } else {
+          $scope.addingCatwalk = false;
+        }
+      });
       $scope.createCatwalk = function(){
         console.log("pushing catwalk",$scope.newCatwalk)
         Catwalks.push($scope.newCatwalk, function(){

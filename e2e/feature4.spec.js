@@ -11,6 +11,7 @@ describe('Feature 4. New catwalk, fields', function () {
   });
 
   it('should make me enter data before i can save', function(done) {
+    browser.wait(protractor.until.elementIsNotVisible(page.loadSpinner),10000);
     expect(page.buttonSave.isDisplayed()).not.toBeTruthy();
     page.textHow.sendKeys("gently");
     page.textLeashes.sendKeys("4");

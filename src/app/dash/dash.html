@@ -8,6 +8,10 @@
     </div>
   </md-toolbar>
 
+  <div class='loadspinner' ng-hide='catwalksLoaded'>
+  Loading...
+  </div>
+
   <div class='container addingCatwalk' ng-if='addingCatwalk'>
     <form name='addCatwalk' ng-submit='createCatwalk()'>
 
@@ -27,8 +31,33 @@
     </form>
   </div>
 
-  <div ng-repeat='catwalk in catwalks'>
-  {{catwalk}}
+  <div class='container'>
+    <md-list>
+      <div ng-repeat='catwalk in catwalks'>
+        <md-list-item>
+          <!-- <md-icon md-font-set='material-icons'>face</md-icon> -->
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="daily"'>wb_sunny</md-icon>
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="hourly"'>hourglass_empty</md-icon>
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="20m"'>schedule</md-icon>
+          <div flex>
+            <h3>{{catwalk.how}}</h3>
+            <p>
+              {{catwalk.leashes}} Leashes |
+              <span ng-if='catwalk.frequency=="daily"'>Daily</span>
+              <span ng-if='catwalk.frequency=="hourly"'>Hourly</span>
+              <span ng-if='catwalk.frequency=="20m"'>Every 20m</span>              
+            </p>
+          </div>
+          <div flex='20'>
+            <p>NEXT</p>
+            {{catwalk.next}}
+          </div>
+        </md-list-item>
+        <div ng-show='isOpen'>
+        deets
+        </div>
+      </div>
+    </md-list>
   </div>
 
 

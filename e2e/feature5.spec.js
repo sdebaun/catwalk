@@ -1,6 +1,6 @@
 'use strict';
 
-ddescribe('Feature 5. Adding a catwalk to the list', function () {
+describe('Feature 5. Adding a catwalk to the list', function () {
   var page;
 
   beforeEach(function () {
@@ -11,7 +11,8 @@ ddescribe('Feature 5. Adding a catwalk to the list', function () {
   });
 
   it('should let me save and see the data i entered', function(done) {
-    expect(page.rowsCatwalk.count()).toBe(0)
+    browser.wait(protractor.until.elementIsNotVisible(page.loadSpinner),10000);
+    expect(page.rowsCatwalk.count()).toBe(0);
     page.textHow.sendKeys("gently");
     page.textLeashes.sendKeys("4");
     page.selectFrequency.click().then( function(){
@@ -24,7 +25,7 @@ ddescribe('Feature 5. Adding a catwalk to the list', function () {
       expect(page.rowsCatwalk.count()).toBe(1);
       var newRow = page.rowsCatwalk.get(0);
       expect(newRow.getText()).toContain("gently");
-      expect(newRow.getText()).toContain("4 Leases");
+      expect(newRow.getText()).toContain("4 Leashes");
       expect(newRow.getText()).toContain("5 PM");
       expect(newRow.getText()).toContain("Daily");
       done();
