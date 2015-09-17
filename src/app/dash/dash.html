@@ -11,8 +11,11 @@
     </div>
   </md-toolbar>
 
-  <div class='loadspinner' ng-hide='catwalksLoaded'>
-  Loading...
+  <div class='container' ng-hide='catwalksLoaded'>
+    <div class='loadspinner'>
+    Herding Cats...
+    <md-progress-circular md-mode='indeterminate'></md-progress-circular>
+    </div>
   </div>
 
   <div class='container addingCatwalk' ng-if='addingCatwalk'>
