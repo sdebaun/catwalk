@@ -37,7 +37,7 @@
   <div class='container'>
     <md-list>
       <div ng-repeat='catwalk in catwalks'>
-        <md-list-item>
+        <md-list-item ng-click='isOpen=!isOpen'>
           <!-- <md-icon md-font-set='material-icons'>face</md-icon> -->
           <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="daily"'>wb_sunny</md-icon>
           <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="hourly"'>hourglass_empty</md-icon>
@@ -56,8 +56,11 @@
             {{catwalk.next}}
           </div>
         </md-list-item>
-        <div ng-show='isOpen'>
-        deets
+        <div class='details' ng-show='isOpen'>
+          <catwalk-fields catwalk='catwalk'></catwalk-fields>
+          <div layout layout-fill layout-align='center center'>
+          <md-button class='md-warn delete' ng-click='delete(catwalk)'>Remeowve this Catwalk</md-button>
+          </div>
         </div>
       </div>
     </md-list>

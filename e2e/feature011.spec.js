@@ -1,6 +1,6 @@
 'use strict';
 
-ddescribe('Feature 11. Deleting a catwalk', function () {
+describe('Feature 11. Deleting a catwalk', function () {
   var page;
 
   beforeEach(function () {
@@ -18,6 +18,7 @@ ddescribe('Feature 11. Deleting a catwalk', function () {
       return onlyRow.element(by.css("button.delete")).click();
     }).then( function(){
       expect(page.rowsCatwalk.count()).toBe(0);
+      done();
     })
   });
 
