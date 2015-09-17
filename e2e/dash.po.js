@@ -7,6 +7,7 @@ var DashPage = function() {
 
   this.selectFrequency = element(by.css('md-select[name=frequency]'));
   this.optionDaily = element(by.css('md-option.daily'));
+  this.optionHourly = element(by.css('md-option.hourly'));
 
   this.timeNext = element(by.css('input[name=next]'));
   this.divOnboarding = element(by.css('div.onboarding'));

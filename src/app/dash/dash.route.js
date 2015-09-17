@@ -25,6 +25,7 @@ angular
         console.log("pushing catwalk",$scope.newCatwalk)
         Catwalks.push($scope.newCatwalk, function(){
           $timeout(function(){ $scope.addingCatwalk = false })
+          $scope.newCatwalk={}
         });
       }
     }

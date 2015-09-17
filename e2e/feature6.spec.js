@@ -1,6 +1,6 @@
 'use strict';
 
-ddescribe('Feature 6. Adding 2d catwalk', function () {
+describe('Feature 6. Adding 2d catwalk', function () {
   var page;
 
   beforeEach(function () {
@@ -14,6 +14,7 @@ ddescribe('Feature 6. Adding 2d catwalk', function () {
     browser.wait(protractor.until.elementIsNotVisible(page.loadSpinner),10000);
     expect(page.rowsCatwalk.count()).toBe(1);
     page.buttonAddCatwalk.click().then( function(){
+      expect(page.divOnboarding.isDisplayed()).not.toBeTruthy();
       page.textHow.sendKeys("to the pub");
       page.textLeashes.sendKeys("2");
       return page.selectFrequency.click()
