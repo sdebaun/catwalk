@@ -21,7 +21,6 @@ angular
       });
 
       $scope.createCatwalk = function(){
-        console.log("pushing catwalk",$scope.newCatwalk)
         Catwalks.push($scope.newCatwalk, function(){
           $timeout(function(){ $scope.addingCatwalk = false })
           $scope.newCatwalk={}
@@ -29,7 +28,6 @@ angular
       }
 
       $scope.delete = function(catwalk){
-        console.log("deleting catwalk",catwalk.$id);
         Catwalks.child(catwalk.$id).remove();
       }
     }
