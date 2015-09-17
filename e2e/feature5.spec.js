@@ -5,7 +5,7 @@ ddescribe('Feature 5. Adding a catwalk to the list', function () {
 
   beforeEach(function () {
     var database = require('./firebase');
-    database.clear()
+    database.clear();
     browser.get('/#/dash');
     page = require('./dash.po');
   });
