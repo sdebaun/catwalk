@@ -1,0 +1,73 @@
+<div class='page dash'>
+
+  <md-toolbar>
+    <div class='container md-toolbar-tools'>
+      <div layout='row' layout-fill layout-align='start center'>
+        <md-button class='md-fab md-mini md-accent addCatwalk' ng-click='addingCatwalk=!addingCatwalk' ng-show='catwalks.length>0'>
+          <md-icon class='material-icons'>add</md-icon>
+        </md-button>
+        <h1 flex>Catwalk</h1>
+      </div>
+    </div>
+  </md-toolbar>
+
+  <div class='container' ng-hide='catwalksLoaded'>
+    <div class='loadspinner'>
+    Herding Cats...
+    <md-progress-circular md-mode='indeterminate'></md-progress-circular>
+    </div>
+  </div>
+
+  <div class='container addingCatwalk' ng-if='addingCatwalk'>
+    <form name='addCatwalk' ng-submit='createCatwalk()'>
+
+      <div class='onboarding' ng-show='catwalks.length==0'>
+        <h2>Your FURst Catwalk!</h2>
+        <p>Just tell us when you want your cat walked, and we'll walk it!</p>
+      </div>
+
+      <div class='fields'>
+
+        <catwalk-fields catwalk='newCatwalk'></catwalk-fields>
+
+        <md-button ng-show='addCatwalk.$valid' class='md-accent md-raised save'>PURRFECT!</md-button>
+
+      </div>
+
+    </form>
+  </div>
+
+  <div class='container'>
+    <md-list>
+      <div ng-repeat='catwalk in catwalks'>
+        <md-list-item ng-click='isOpen=!isOpen'>
+          <!-- <md-icon md-font-set='material-icons'>face</md-icon> -->
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="daily"'>wb_sunny</md-icon>
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="hourly"'>hourglass_empty</md-icon>
+          <md-icon class='material-icons md-32' ng-if='catwalk.frequency=="20min"'>schedule</md-icon>
+          <div flex>
+            <h3>{{catwalk.how}}</h3>
+            <p>
+              {{catwalk.leashes}} Leashes |
+              <span ng-if='catwalk.frequency=="daily"'>Daily</span>
+              <span ng-if='catwalk.frequency=="hourly"'>Hourly</span>
+              <span ng-if='catwalk.frequency=="20min"'>Every 20m</span>              
+            </p>
+          </div>
+          <div flex='20'>
+            <p>NEXT</p>
+            {{catwalk.next}}
+          </div>
+        </md-list-item>
+        <div class='details' ng-show='isOpen'>
+          <catwalk-fields catwalk='catwalk'></catwalk-fields>
+          <div layout layout-fill layout-align='center center'>
+          <md-button class='md-warn delete' ng-click='delete(catwalk)'>Remeowve this Catwalk</md-button>
+          </div>
+        </div>
+      </div>
+    </md-list>
+  </div>
+
+
+</div>
