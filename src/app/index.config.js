@@ -19,9 +19,6 @@ angular
     })
 }])
 
-.constant('malarkey', malarkey) // delete when scaffolding purged
-.constant('moment', moment) // delete when scaffolding purged
-
 .constant('firebaseUrl', 'https://catwalk-sample.firebaseio.com')
 
 .service('firebaseRoot', ['Firebase', 'firebaseUrl', function(Firebase, firebaseUrl){
